@@ -35,6 +35,16 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ScheduleEditActivity::class.java)
             startActivity(intent)
         }
+
+        //RecyclerViewがクリックされたときのコールバック処理
+        //RecyclerViewがクリックされたときのアダプターに用意したsetOnItemClickListenerメソッドに登録
+        adapter.setOnItemClickListener{id ->
+            val intent = Intent(this , ScheduleEditActivity::class.java)
+                //Scheduleのidを受け取りインテントにschedule_idとして格納することでidをスケジュール編集用アクティビティScheduleEditActivityに渡す
+                .putExtra("schedule_id" , id)
+            startActivity(intent)
+
+        }
     }
 
     //アクティビティの終了処理
